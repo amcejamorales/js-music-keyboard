@@ -2,13 +2,15 @@ $(document).ready( function() {
   const validNotes = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
 
   let playAudio = function playAudio(note) {
-    $('audio').each(function() {
-      this.pause();
-      this.currentTime = 0;
-    });
     let noteId = `#${note}Audio`;
-    let audio = $(noteId)[0];
-    audio.play();
+    let thisAudio = $(noteId)[0];
+    $('audio').each(function() {
+      if (this === thisAudio) {
+        this.pause();
+        this.currentTime = 0;
+      }
+    });
+    thisAudio.play();
   }
 
   $('.instrument').on('click', 'button', function() {
