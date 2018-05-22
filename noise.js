@@ -4,12 +4,7 @@ $(document).ready( function() {
   let playAudio = function playAudio(note) {
     let noteId = `#${note}Audio`;
     let thisAudio = $(noteId)[0];
-    $('audio').each(function() {
-      if (this === thisAudio) {
-        this.pause();
-        this.currentTime = 0;
-      }
-    });
+    thisAudio.currentTime = 0;
     thisAudio.play();
   }
 
